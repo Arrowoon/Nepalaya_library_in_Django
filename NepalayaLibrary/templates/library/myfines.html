@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {%block heading %} My Fines {% endblock heading %}
+<!--  -->
+{%block content %}
+<ul class="list-disc px-4">
+  {% for fine in fines %}
+  <li>
+    <div class="flex flex-col sm:flex-row content-center">
+      <h2 class="mt-0 sm:mt-2">
+        Fine of
+        <span class="text-black text-red-500">Rs: {{fine.amount}}</span> for Book
+        :- {{fine.issue.book.name}}
+      </h2>
+      
+      {%if fine.paid %}
+      <p class="text-white hover:shadow-md text-md rounded text-center bg-green-700 px-4 py-1 mt-2 sm:mt-0 ml-0 sm:ml-2">Paid on {{fine.datetime_of_payment}}</p>
+      {% else %}
+      <P
+        class="text-white hover:shadow-md text-md rounded text-center bg-green-700 px-4 py-1 mt-2 sm:mt-0 ml-0 sm:ml-2">Pay Fine</p>
+      {% endif %}
+      
+    </div>
+    <br>
+    <h3 class="my-2 p-2 text-x2">Either Pay with e-Sewa(Id: 9860560772) Or Pay with Cash to Librarian In-Person</h3>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}
